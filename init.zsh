@@ -63,7 +63,9 @@ p6df::modules::kubernetes::home::symlink() { }
 #>
 ######################################################################
 p6df::modules::kubernetes::init() {
-  
+
+  ZSH_CACHE_DIR=$ZDOTDIR
+  export ZSH_CACHE_DIR  
   source $P6_DFZ_SRC_DIR/jonmosco/kube-ps1/kube-ps1.sh
 }
 
