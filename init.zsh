@@ -14,7 +14,10 @@ p6df::modules::kubernetes::version() { echo "0.0.1" }
 #>
 ######################################################################
 p6df::modules::kubernetes::deps() {
-    ModuleDeps=()
+    ModuleDeps=(
+      jonmosco/kube-ps1 # also supports `oc` for openshift client
+      robbyrussell/oh-my-zsh:plugins/kubectl
+    )
 }
 
 ######################################################################
@@ -26,15 +29,12 @@ p6df::modules::kubernetes::deps() {
 ######################################################################
 p6df::modules::kubernetes::external::brew() {
 
-  brew install kube-aws
-  brew install kube-ps1
   brew install kubeaudit
   brew install kubebuilder
   brew install kubecfg
   brew install kubectx
   brew install kubeless
   brew install kubeprod
-  brew install kubernetes-cli
   brew install kubernetes-service-catalog-client
   brew install kubeseal
   brew install kubespy
@@ -63,6 +63,8 @@ p6df::modules::kubernetes::home::symlink() { }
 #>
 ######################################################################
 p6df::modules::kubernetes::init() {
+  
+  source $P6_DFZ_SRC_DIR/jonmosco/kube-ps1/kube-ps1.sh
 }
 
 ######################################################################
@@ -74,6 +76,7 @@ p6df::modules::kubernetes::init() {
 ######################################################################
 p6df::prompt::kubernetes::line() {
 
+  p6_kubernetes_prompt_info
 }
 
 ######################################################################
@@ -88,4 +91,13 @@ p6df::prompt::kubernetes::line() {
 ######################################################################
 p6_kubernetes_prompt_info() {
 
+    local str
+
+    str=$(kube_ps1)
+
+    if p6_string_blank "$str"; then
+	p6_return_void
+    else
+	p6_return_str "$str"
+    fi
 }
