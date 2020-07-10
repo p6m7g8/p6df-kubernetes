@@ -15,7 +15,6 @@ p6df::modules::kubernetes::version() { echo "0.0.1" }
 ######################################################################
 p6df::modules::kubernetes::deps() {
     ModuleDeps=(
-      jonmosco/kube-ps1                       # also supports `oc` for openshift client
       robbyrussell/oh-my-zsh:plugins/kubectl
     )
 }
@@ -93,11 +92,16 @@ p6_kubernetes_prompt_info() {
 
     local str
 
-    str=$(kube_ps1)
+    str="kube:   ${KUBE_PS1_CONTEXT}:${KUBE_PS1_NAMESPACE}"
 
     if p6_string_blank "$str"; then
-	p6_return_void
+      p6_return_void
     else
-	p6_return_str "$str"
+      p6_return_str "$str"
     fi
+}
+
+p6_kubernetes_minikube_docker() {
+
+    eval $(minikube -p minikube docker-env)
 }
