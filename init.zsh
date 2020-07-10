@@ -15,7 +15,7 @@ p6df::modules::kubernetes::version() { echo "0.0.1" }
 ######################################################################
 p6df::modules::kubernetes::deps() {
     ModuleDeps=(
-      jonmosco/kube-ps1 # also supports `oc` for openshift client
+      jonmosco/kube-ps1                       # also supports `oc` for openshift client
       robbyrussell/oh-my-zsh:plugins/kubectl
     )
 }
@@ -64,8 +64,6 @@ p6df::modules::kubernetes::home::symlink() { }
 ######################################################################
 p6df::modules::kubernetes::init() {
 
-  ZSH_CACHE_DIR=$ZDOTDIR
-  export ZSH_CACHE_DIR  
   source $P6_DFZ_SRC_DIR/jonmosco/kube-ps1/kube-ps1.sh
 }
 
