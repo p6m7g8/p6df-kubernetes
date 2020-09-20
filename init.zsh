@@ -17,6 +17,7 @@ p6df::modules::kubernetes::version() { echo "0.0.1" }
 p6df::modules::kubernetes::deps() {
     ModuleDeps=(
       robbyrussell/oh-my-zsh:plugins/kubectl
+      p6m7g8/p6kubernetes
     )
 }
 
@@ -67,7 +68,6 @@ p6df::modules::kubernetes::home::symlink() { }
 ######################################################################
 p6df::modules::kubernetes::init() {
 
-  true
 }
 
 ######################################################################
@@ -85,107 +85,92 @@ p6df::prompt::kubernetes::line() {
 ######################################################################
 #<
 #
-# Function: p6_kubernetes_prompt_info()
-#
-#  Returns:
-#	str - str
+# Function: p6df::modules::kubernetes::on()
 #
 #>
 ######################################################################
-p6_kubernetes_prompt_info() {
+p6df::modules::kubernetes::on() {
 
-    local ctx
-    local ns
-
-    if ! p6_file_exists "$HOME/.kube/config"; then
-      p6_return_void
-    else
-      ctx=$(kubectx -c)
-      ns=$(kubens -c)
-
-      local str
-      str="kube:   ${ctx}:${ns}"
-
-      if p6_string_blank "$str"; then
-        p6_return_void
-      else
-        p6_return_str "$str"
-      fi
-    fi
+  KUBECONFIG=$HOME/.kube/config
+  p6_env_export "KUBECONFIG" "$KUBECONFIG"
 }
 
 ######################################################################
 #<
 #
-# Function: p6_kubernetes_minikube_docker()
+# Function: p6df::modules::kubernetes::off()
 #
 #>
 ######################################################################
-p6_kubernetes_minikube_docker() {
+p6df::modules::kubernetes::off() {
+
+  p6_env_unexport "KUBECONFIG"
+  p6_env_unexport "P6_KUBE_CFG"
+  p6_env_unexport "P6_KUBE_NS"
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::kubernetes::ctx(ctx)
+#
+#  Args:
+#	ctx - 
+#
+#>
+######################################################################
+p6df::modules::kubernetes::ctx() {
+  local ctx="$1"
+
+  kubectx "$ctx"
+
+  p6_env_export "P6_KUBE_CFG" "$ctx"
+
+  p6df::modules::kubernetes::on
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::kubernetes::ns(ns)
+#
+#  Args:
+#	ns - 
+#
+#>
+######################################################################
+p6df::modules::kubernetes::ns() {
+  local ns="$1"
+
+  kubens "$ns"
+
+  p6_env_export "P6_KUBE_NS" "$ns"
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::kubernetes::minikube()
+#
+#>
+######################################################################
+p6df::modules::kubernetes::minikube() {
 
   eval $(minikube -p minikube docker-env)
-}
-
-# p6aws/lib/svc/eks
-######################################################################
-#<
-#
-# Function: p6_kubernetes_aws_cluster_logging_enable([cluster_name=$KUBE_CLUSTER_NAME])
-#
-#  Args:
-#	OPTIONAL cluster_name -  [$KUBE_CLUSTER_NAME]
-#
-#>
-######################################################################
-p6_kubernetes_aws_cluster_logging_enable() {
-  local cluster_name="${1:-$KUBE_CLUSTER_NAME}"
-
-  aws eks update-cluster-config \
-    --name "$cluster_name" \
-    --logging '{"clusterLogging":[{"types":["api","audit","authenticator","controllerManager","scheduler"],"enabled":true}]}'
+  p6df::modules::kubernetes::ctx "$MINIKUBE_ACTIVE_DOCKERD"
+  p6df::modules::kubernetes::ns "default"
 }
 
 ######################################################################
 #<
 #
-# Function: p6_kubernetes_dashboard_server_token_get()
+# Function: p6df::modules::kubernetes::minikube::start()
 #
 #>
 ######################################################################
-p6_kubernetes_dashboard_server_token_get() {
+p6df::modules::kubernetes::minikube::start() {
 
-  local secret
-  secret=$(kubectl -n kube-system get secret | grep eks-admin | awk '{ print $1 }')
+  minikube start
 
-  kubectl -n kube-system describe secret "$secret" | awk '/^token/ { print $2 }'
-}
-
-######################################################################
-#<
-#
-# Function: p6_kubernetes_metrics_raw_get()
-#
-#>
-######################################################################
-p6_kubernetes_metrics_raw_get() {
-
-  kubectl -n kube-system get --raw /metrics
-}
-
-######################################################################
-#<
-#
-# Function: p6_kubernetes_aws_iam_oidc_create([cluster_name=$KUBE_CLUSTER_NAME])
-#
-#  Args:
-#	OPTIONAL cluster_name -  [$KUBE_CLUSTER_NAME]
-#
-#>
-######################################################################
-p6_kubernetes_aws_iam_oidc_create() {
-  local cluster_name="${1:-$KUBE_CLUSTER_NAME}"
-
-  eksctl utils associate-iam-oidc-provider \
-    --cluster $cluster_name \
-    --approve
+  p6df::modules::kubernetes::minikube
 }
