@@ -16,7 +16,7 @@ p6df::modules::kubernetes::version() { echo "0.0.1" }
 ######################################################################
 p6df::modules::kubernetes::deps() {
     ModuleDeps=(
-      robbyrussell/oh-my-zsh:plugins/kubectl
+      ohmyzsh/ohmyzsh:plugins/kubectl
       p6m7g8/p6kubernetes
     )
 }
@@ -30,8 +30,9 @@ p6df::modules::kubernetes::deps() {
 ######################################################################
 p6df::modules::kubernetes::external::brew() {
 
-  brew tap weaveworks/tap
-  brew install weaveworks/tap/eksctl
+  brew install buildkit
+
+  brew install kind
 
   brew install kubeaudit
   brew install kubebuilder
