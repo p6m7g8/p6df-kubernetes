@@ -50,6 +50,8 @@ p6df::modules::kubernetes::external::brew() {
   brew cask install kubecontext
   brew cask install kubernetic
 
+  brew install openshift-cli
+  
   brew install docker-machine-driver-xhyve
   sudo chown root:wheel $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
   sudo chmod u+s $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
