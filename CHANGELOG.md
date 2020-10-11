@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/p6m7g8/p6df-kubernetes/compare/v1.0.2...v2.0.0) (2020-10-11)
+
+
+### Features
+
+* **api:** use `p6_run_code()` ([#11](https://github.com/p6m7g8/p6df-kubernetes/issues/11)) ([141c03a](https://github.com/p6m7g8/p6df-kubernetes/commit/141c03a802bde18bd9aab4eaea0907c5e70ecfb4))
+* **brew:** adds minishift ([#10](https://github.com/p6m7g8/p6df-kubernetes/issues/10)) ([38c8045](https://github.com/p6m7g8/p6df-kubernetes/commit/38c8045bcf8dca07cdcef46091690a8dd9761907))
+
 ### [1.0.2](https://github.com/p6m7g8/p6df-kubernetes/compare/v1.0.1...v1.0.2) (2020-09-27)
 
 
