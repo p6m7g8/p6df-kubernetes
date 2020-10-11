@@ -79,11 +79,11 @@ p6df::modules::kubernetes::init() {
 ######################################################################
 #<
 #
-# Function: p6df::prompt::kubernetes::line()
+# Function: p6df::modules::kubernetes::prompt::line()
 #
 #>
 ######################################################################
-p6df::prompt::kubernetes::line() {
+p6df::modules::kubernetes::prompt::line() {
 
   p6_kubernetes_prompt_info
 }
@@ -128,7 +128,7 @@ p6df::modules::kubernetes::off() {
 p6df::modules::kubernetes::ctx() {
   local ctx="$1"
 
-  kubectx "$ctx"
+  p6_run_code "kubectx $ctx"
 
   p6_env_export "P6_KUBE_CFG" "$ctx"
 
@@ -148,7 +148,7 @@ p6df::modules::kubernetes::ctx() {
 p6df::modules::kubernetes::ns() {
   local ns="$1"
 
-  kubens "$ns"
+  p6_run_code "kubens $ns"
 
   p6_env_export "P6_KUBE_NS" "$ns"
 }
@@ -162,7 +162,7 @@ p6df::modules::kubernetes::ns() {
 ######################################################################
 p6df::modules::kubernetes::minikube() {
 
-  eval $(minikube -p minikube docker-env)
+  eval $(p6_run_code minikube -p minikube docker-env)
   p6df::modules::kubernetes::ctx "$MINIKUBE_ACTIVE_DOCKERD"
   p6df::modules::kubernetes::ns "default"
 }
@@ -176,7 +176,7 @@ p6df::modules::kubernetes::minikube() {
 ######################################################################
 p6df::modules::kubernetes::minikube::start() {
 
-  minikube start
+  p6_run_code "minikube start"
 
   p6df::modules::kubernetes::minikube
 }
