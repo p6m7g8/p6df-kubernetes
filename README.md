@@ -9,6 +9,6 @@
 - p6df::modules::kubernetes::ns(ns)
 - p6df::modules::kubernetes::off()
 - p6df::modules::kubernetes::on()
+- p6df::modules::kubernetes::prompt::line()
 - p6df::modules::kubernetes::version()
-- p6df::prompt::kubernetes::line()
 
