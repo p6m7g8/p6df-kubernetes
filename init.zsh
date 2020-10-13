@@ -102,9 +102,9 @@ p6df::modules::kubernetes::on() {
 ######################################################################
 p6df::modules::kubernetes::off() {
 
-  p6_env_unexport "KUBECONFIG"
-  p6_env_unexport "P6_KUBE_CFG"
-  p6_env_unexport "P6_KUBE_NS"
+  p6_env_export_un "KUBECONFIG"
+  p6_env_export_un "P6_KUBE_CFG"
+  p6_env_export_un "P6_KUBE_NS"
 }
 
 ######################################################################
@@ -154,7 +154,7 @@ p6df::modules::kubernetes::ns() {
 ######################################################################
 p6df::modules::kubernetes::minikube() {
 
-  eval $(p6_run_code minikube -p minikube docker-env)
+  p6_run_code $(p6_run_code minikube -p minikube docker-env)
   p6df::modules::kubernetes::ctx "$MINIKUBE_ACTIVE_DOCKERD"
   p6df::modules::kubernetes::ns "default"
 }
