@@ -113,7 +113,7 @@ p6df::modules::kubernetes::off() {
 # Function: p6df::modules::kubernetes::ctx(ctx)
 #
 #  Args:
-#	ctx - 
+#	ctx -
 #
 #>
 ######################################################################
@@ -133,7 +133,7 @@ p6df::modules::kubernetes::ctx() {
 # Function: p6df::modules::kubernetes::ns(ns)
 #
 #  Args:
-#	ns - 
+#	ns -
 #
 #>
 ######################################################################
