@@ -37,15 +37,15 @@ p6df::modules::kubernetes::external::brew() {
   brew install kubespy
   brew install minikube
 
-  brew cask install kube-cluster
-  brew cask install kube-forwarder
-  brew cask install kubecontext
-  brew cask install kubernetic
+  brew install --cask kube-cluster
+  brew install --cask kube-forwarder
+  brew install --cask kubecontext
+  brew install --cask kubernetic
 
   brew install docker-machine-driver-xhyve
   sudo chown root:wheel $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
   sudo chmod u+s $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
-  brew cask install minishift
+  brew install --cask minishift
 }
 
 ######################################################################
