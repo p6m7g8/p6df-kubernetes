@@ -90,6 +90,7 @@ p6df::modules::kubernetes::prompt::line() {
 p6df::modules::kubernetes::on() {
 
   KUBECONFIG=$HOME/.kube/config
+  chmod 600 $KUBECONFIG
   p6_env_export "KUBECONFIG" "$KUBECONFIG"
 }
 
