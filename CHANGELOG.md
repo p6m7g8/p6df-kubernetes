@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/p6m7g8/p6df-kubernetes/compare/v2.0.0...v2.1.0) (2020-12-06)
+
+
+### Features
+
+* **api:** centralize ::version() ([4155525](https://github.com/p6m7g8/p6df-kubernetes/commit/4155525f4da513c3352e2d4ffc68535ce2ef91f6))
+* **community:** adds CODE_OF_CONDUCT ([47aaf65](https://github.com/p6m7g8/p6df-kubernetes/commit/47aaf65e0afb6a3d2611469c74c3632b5ecfdc32))
+* **github:** adds ISSUE_TEMPLATEs ([47cef20](https://github.com/p6m7g8/p6df-kubernetes/commit/47cef208f01746706c03aa158faf89211974c90f))
+
+
+### Bug Fixes
+
+* **brew:** cask -> --cask ([#22](https://github.com/p6m7g8/p6df-kubernetes/issues/22)) ([562dc8a](https://github.com/p6m7g8/p6df-kubernetes/commit/562dc8aff8ac74b4647c79f0a5ee216c63b06911))
+* **p6df::modules::kubernetes::off:** correct `p6_env_unexport` -> `p6_env_export_un()` ([#13](https://github.com/p6m7g8/p6df-kubernetes/issues/13)) ([64d537f](https://github.com/p6m7g8/p6df-kubernetes/commit/64d537fdf7bf1af227c965d79edb0e838f8d46b1))
+
+
+* **community:** rely on the .github/ in the org ([#20](https://github.com/p6m7g8/p6df-kubernetes/issues/20)) ([120471d](https://github.com/p6m7g8/p6df-kubernetes/commit/120471d0279fd3d4fa7c4c695e152d802a3c3430))
+* **docs:** fixes whitespace ([339d649](https://github.com/p6m7g8/p6df-kubernetes/commit/339d6491b656fbf235619aff85f7de38d87ab088))
+* **README:** fixes module expansion, adds CodeCov and Synk badges ([#21](https://github.com/p6m7g8/p6df-kubernetes/issues/21)) ([3d76cb1](https://github.com/p6m7g8/p6df-kubernetes/commit/3d76cb17cbd3eff6cadfd1435dbfba62ab907727))
+* **README:** updates to template v2.0 ([bdf733f](https://github.com/p6m7g8/p6df-kubernetes/commit/bdf733f00a6efee4270c2cdbb952c5ae78c72334))
+* **semantic:** no longer needed, defaults are fine ([cbd2325](https://github.com/p6m7g8/p6df-kubernetes/commit/cbd232578899f6d6f73f9f7a76ae8abfcf128caa))
+
 ## [2.0.0](https://github.com/p6m7g8/p6df-kubernetes/compare/v1.0.2...v2.0.0) (2020-10-11)
 
 
