@@ -38,9 +38,11 @@
 
 - [Change Log](CHANGELOG.md)
 
-### Usage
+## Usage
 
-#### init.zsh:
+### p6df-kubernetes:
+
+#### p6df-kubernetes/init.zsh:
 
 - p6df::modules::kubernetes::ctx(ctx)
 - p6df::modules::kubernetes::deps()
