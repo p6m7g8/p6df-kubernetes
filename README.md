@@ -53,6 +53,7 @@
 - p6df::modules::kubernetes::off()
 - p6df::modules::kubernetes::on()
 - p6df::modules::kubernetes::prompt::line()
+- p6df::modules::kubernetes::vscodes()
 
 
 
