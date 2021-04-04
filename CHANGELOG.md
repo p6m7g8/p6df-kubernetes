@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/p6m7g8/p6df-kubernetes/compare/v2.1.0...v2.1.1) (2021-04-04)
+
+
+* **link:** remove rendundant symlinks; echo for now ([#25](https://github.com/p6m7g8/p6df-kubernetes/issues/25)) ([12c0736](https://github.com/p6m7g8/p6df-kubernetes/commit/12c07367ccf4d330851e5f54e1b28d682f3c4f1b))
+* **README:** updates generator ([#24](https://github.com/p6m7g8/p6df-kubernetes/issues/24)) ([6c3d08c](https://github.com/p6m7g8/p6df-kubernetes/commit/6c3d08c11a4129d6dc7e81ae52a357cea7838eb7))
+* **vscode:** splits vscode extensions to their languages ([#26](https://github.com/p6m7g8/p6df-kubernetes/issues/26)) ([fddd9a9](https://github.com/p6m7g8/p6df-kubernetes/commit/fddd9a915e7b9e2c25706f8176322989e6c5d23e))
+* Coc -> .github ([21155f4](https://github.com/p6m7g8/p6df-kubernetes/commit/21155f40d2146e8989ca8216e08b5813185192d9))
+
 ## [2.1.0](https://github.com/p6m7g8/p6df-kubernetes/compare/v2.0.0...v2.1.0) (2020-12-06)
 
 
